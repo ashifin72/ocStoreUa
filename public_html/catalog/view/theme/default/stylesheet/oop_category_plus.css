@@ -1,0 +1,64 @@
+/****** 0001.pro | OooOnePro | oop ******/
+
+#oop_cls_div_cont {
+   margin-bottom:20px;
+}
+
+#oop_ul_cats {
+  list-style: none;
+  padding: 0;
+	border:1px solid #ddd;
+	border-radius:4px;
+	overflow:hidden;
+  margin-bottom: 0px;
+}
+
+#oop_ul_cats li {
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+	border-top: 1px solid #ddd;
+	position: relative;
+}
+
+#oop_ul_cats ul {
+  list-style: none;
+  padding: 0;
+  display: none;
+}
+
+#oop_ul_cats ul li {
+  font-weight: normal;
+  background-color: #fff;
+}
+
+#oop_ul_cats > li > ul > li:first-child {
+	border-top:none;
+}
+
+#oop_ul_cats .oop_cls_div_exp {
+  color:#888;
+  float:right;
+	padding: 8px;
+	margin-top:-8px;
+}
+
+#oop_ul_cats a {
+	display: block;
+  color:#888;
+  text-decoration: none;
+	padding: 8px 0px 8px 12px;
+	outline: 0;
+}
+
+#oop_ul_cats .oop_cls_a_active,  #oop_ul_cats a:hover{
+	background:#eee;
+	color:#444;
+	text-shadow:0 1px 0 #fff;
+}
+
+#oop_ul_cats .oop_cls_a_prev_active {
+	background:#fafafa;
+	color:#444;
+	text-shadow:0 1px 0 #fff;
+}

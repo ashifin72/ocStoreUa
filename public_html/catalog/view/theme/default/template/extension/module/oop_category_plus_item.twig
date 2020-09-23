@@ -1,0 +1,13 @@
+{% for key, category in categories %}
+    <li>
+        <a href="{{ categories_info[key].href }}"  {% if key in parts %} {% if key == parts | last %}  class="oop_cls_a_active" {% else %} class="oop_cls_a_prev_active"  {% endif %} {% endif %}>
+            {% for i in 0 .. categories_info[key].level %}  {% if i %}  -  {% endif %} {% endfor %} {{ categories_info[key].name }}
+            {% if category | length > 0 %} <div class="oop_cls_div_exp">{% if key in parts %}-{% else %}+{% endif %}</div> {% endif %}
+        </a>
+        {% if category | length > 0 %}
+            <ul {% if key in parts %} style="display:block;" {% endif %}>
+                {% include "default/template/extension/module/oop_category_plus_item.twig" with {'categories': category, 'categories_info': categories_info, 'parts': parts} only %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

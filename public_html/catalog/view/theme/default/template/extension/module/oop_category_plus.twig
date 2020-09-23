@@ -1,0 +1,20 @@
+<div id="oop_cls_div_cont">
+  <ul id="oop_ul_cats">
+    <li style="border:none;">
+       <ul style="display:block;">
+         {% include "default/template/extension/module/oop_category_plus_item.twig" with {'categories':categories.categories, 'categories_info': categories.categories_info, 'parts': parts} only %}
+      </ul>
+    </li>
+  </ul>
+</div>
+<script type="text/javascript"><!--
+$(function(){
+  $("#oop_ul_cats .oop_cls_div_exp").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if($(this).html()=="+") { $(this).html("-"); } else { $(this).html("+"); }
+      var subli = $(this).closest("li").find('> ul');
+      if(subli.length) subli.slideToggle(200);
+  });
+});
+//--></script>

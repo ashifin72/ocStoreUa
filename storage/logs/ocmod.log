@@ -1,0 +1,97 @@
+2020-09-23 15:47:20 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 67
+LINE: 73
+
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 19
+----------------------------------------------------------------
+MOD: Auto SEO URL
+
+FILE: admin/view/template/common/footer.twig
+CODE: </body>
+LINE: 8
+
+FILE: admin/view/template/catalog/product_form.twig
+CODE: name="product_description[{{ language.language_id }}][name]"
+LINE: 52
+
+FILE: admin/view/template/catalog/category_form.twig
+CODE: name="category_description[{{ language.language_id }}][name]"
+LINE: 47
+
+FILE: admin/view/template/catalog/manufacturer_form.twig
+CODE: name="name"
+LINE: 38
+
+FILE: admin/view/template/catalog/information_form.twig
+CODE: name="information_description[{{ language.language_id }}][title]"
+LINE: 44
+----------------------------------------------------------------
+MOD: Export/Import Tool (V3.22) for OpenCart 3.x
+
+FILE: admin/controller/common/column_left.php
+CODE: if ($this->user->hasPermission('access', 'tool/upload')) {
+LINE: 656
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: $_['text_backup']
+LINE: 8
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: $_['text_backup']
+LINE: 13
+----------------------------------------------------------------
+MOD: Localcopy OCMOD Install Fix
+
+FILE: admin/controller/marketplace/install.php
+CODE: if ($safe) {
+LINE: 165
+CODE: if (is_dir($file) && !is_dir($path)) {
+LINE: 221
+----------------------------------------------------------------
+MOD: Очиcтка кэша
+
+FILE: admin/controller/common/header.php
+CODE: $data['logged'] = true;
+LINE: 57
+
+FILE: admin/view/template/common/header.twig
+CODE: <ul class="nav navbar-nav navbar-right">
+LINE: 116
+CODE: <ul class="nav navbar-nav navbar-right">
+LINE: 134
+----------------------------------------------------------------
+MOD: Перетаскивание модулей в макетах
+
+FILE: admin/controller/design/layout.php
+CODE: protected function getForm() {
+LINE: 251
+
+FILE: admin/view/template/design/layout_form.twig
+CODE: {{ footer }}
+LINE: 445
+----------------------------------------------------------------
+MOD: Українська мова / Украинский язык
+----------------------------------------------------------------
