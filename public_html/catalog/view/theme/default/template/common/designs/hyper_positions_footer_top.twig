@@ -1,0 +1,16 @@
+{% if (modules50) %}
+    <div id="pos-map">
+        <div class="container{{ pos_map }}">
+            <div class="row">
+                {% if (modules50) %}
+                        {% for module in modules50 %} 
+                            {{ module }} 
+                        {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %} 
+
+
+

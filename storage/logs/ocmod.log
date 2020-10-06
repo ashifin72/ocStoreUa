@@ -1,4 +1,4 @@
-2020-09-24 8:21:25 - MOD: Modification Default
+2020-10-06 13:23:46 - MOD: Modification Default
 
 FILE: system/engine/action.php
 REGEX: ~(require|include)(_once)?\(([^)]+)~
@@ -49,6 +49,111 @@ FILE: admin/view/template/catalog/information_form.twig
 CODE: name="information_description[{{ language.language_id }}][title]"
 LINE: 44
 ----------------------------------------------------------------
+MOD: Buy One Click for OpenCart 3.x
+
+FILE: catalog/controller/common/header.php
+CODE: $data['telephone'] = $this->config->get('config_telephone');
+LINE: 112
+
+FILE: catalog/view/theme/default/template/common/header.twig
+CODE: </head>
+LINE: 264
+
+FILE: catalog/controller/common/footer.php
+CODE: $this->load->language('common/footer');
+LINE: 21
+
+FILE: catalog/view/theme/default/template/common/footer.twig
+CODE: </body>
+LINE: 147
+
+FILE: catalog/controller/product/product.php
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 493
+LINE: 594
+
+FILE: catalog/view/theme/default/template/product/product.twig
+CODE: <div class="clearfix cart-buttons">
+              <div class="form-group">
+                <!--label class="control-label" for="input-quantity">{{ entry_qty }}</label-->
+                <button id="minus-quantity" type="button" class="btn btn-default"><i class="fa fa-minus"></i></button>
+                <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity"
+                       class="form-control"/>
+                <input type="hidden" name="product_id" value="{{ product_id }}"/>
+                <button id="plus-quantity" type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+                <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg btn-block">{{ button_cart }} <i class="fa fa-shopping-cart"></i>
+                </button>
+              </div>
+            </div>
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: catalog/controller/product/category.php
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 414
+LINE: 491
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 84
+LINE: 429
+LINE: 500
+
+FILE: catalog/controller/product/search.php
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 489
+
+FILE: catalog/controller/product/special.php
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 302
+
+FILE: catalog/view/theme/default/template/product/category.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 147
+
+FILE: catalog/view/theme/default/template/product/manufacturer_info.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 99
+
+FILE: catalog/view/theme/default/template/product/search.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 145
+
+FILE: catalog/view/theme/default/template/product/special.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 91
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: $data['products'] = array();
+LINE: 39
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: $data['products'] = array();
+LINE: 39
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: $data['products'] = array();
+LINE: 39
+
+FILE: catalog/controller/extension/module/special.php
+CODE: $data['products'] = array();
+LINE: 39
+
+FILE: catalog/view/theme/default/template/extension/module/bestseller.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 34
+
+FILE: catalog/view/theme/default/template/extension/module/featured.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 34
+
+FILE: catalog/view/theme/default/template/extension/module/latest.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 20
+
+FILE: catalog/view/theme/default/template/extension/module/special.twig
+REGEX: /<div class="button-group">(.*?)<\/div>/is
+LINE: 20
+----------------------------------------------------------------
 MOD: Export/Import Tool (V3.22) for OpenCart 3.x
 
 FILE: admin/controller/common/column_left.php
@@ -62,6 +167,722 @@ LINE: 8
 FILE: admin/language/ru-ru/common/column_left.php
 CODE: $_['text_backup']
 LINE: 13
+----------------------------------------------------------------
+MOD: HYPER Positions v3
+
+FILE: admin/controller/design/layout.php
+CODE: if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+LINE: 25
+LINE: 58
+CODE: $this->model_design_layout->addLayout($this->request->post);
+LINE: 26
+CODE: $this->model_design_layout->editLayout($this->request->get['layout_id'], $this->request->post);
+LINE: 62
+CODE: $data['layout_modules'] = array();
+LINE: 375
+CODE: if (isset($this->request->post['selected']) && $this->validateDelete()) {
+LINE: 98
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 254
+LINE: 414
+CODE: $this->response->setOutput($this->load->view('design/layout_form', $data));
+LINE: 418
+
+FILE: catalog/controller/account/account.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 92
+
+FILE: catalog/controller/account/address.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 220
+LINE: 428
+
+FILE: catalog/controller/account/affiliate.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 252
+
+FILE: catalog/controller/account/download.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 96
+
+FILE: catalog/controller/account/edit.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 151
+
+FILE: catalog/controller/account/forgotten.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 63
+
+FILE: catalog/controller/account/login.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 154
+
+FILE: catalog/controller/account/logout.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 52
+
+FILE: catalog/controller/account/newsletter.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 53
+
+FILE: catalog/controller/account/order.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 84
+LINE: 335
+
+FILE: catalog/controller/account/password.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 77
+
+FILE: catalog/controller/account/recurring.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 84
+LINE: 180
+LINE: 216
+
+FILE: catalog/controller/account/register.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 216
+
+FILE: catalog/controller/account/reset.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 84
+
+FILE: catalog/controller/account/return.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 82
+LINE: 173
+LINE: 215
+LINE: 451
+LINE: 536
+
+FILE: catalog/controller/account/reward.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 82
+
+FILE: catalog/controller/account/success.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 43
+
+FILE: catalog/controller/account/tracking.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 48
+
+FILE: catalog/controller/account/transaction.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 82
+
+FILE: catalog/controller/account/voucher.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 154
+LINE: 185
+
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 112
+
+FILE: catalog/controller/affiliate/login.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 90
+
+FILE: catalog/controller/affiliate/register.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 305
+
+FILE: catalog/controller/affiliate/success.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 45
+
+FILE: catalog/controller/api/cart.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/coupon.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/currency.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/customer.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/login.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/order.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/payment.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/reward.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/shipping.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/api/voucher.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/blog/article.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 326
+LINE: 375
+
+FILE: catalog/controller/blog/category.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 348
+LINE: 397
+
+FILE: catalog/controller/blog/latest.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 281
+
+FILE: catalog/controller/blog/menu.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 242
+LINE: 258
+
+FILE: catalog/controller/checkout/checkout.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 94
+
+FILE: catalog/controller/checkout/confirm.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/failure.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 40
+
+FILE: catalog/controller/checkout/guest.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/guest_shipping.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/login.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/payment_address.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/payment_method.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/register.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/shipping_address.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/shipping_method.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/success.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 76
+
+FILE: catalog/controller/common/cart.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/column_left.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/column_right.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/content_top.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/currency.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/home.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 18
+
+FILE: catalog/controller/common/language.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/maintenance.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/menu.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/search.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/error/not_found.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 40
+
+FILE: catalog/controller/event/activity.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/event/debug.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/event/language.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/event/statistics.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/event/theme.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/event/translation.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/information/contact.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 136
+LINE: 191
+
+FILE: catalog/controller/information/information.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 58
+LINE: 83
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 83
+
+FILE: catalog/controller/information/tracking.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 15
+
+FILE: catalog/controller/mail/affiliate.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/mail/forgotten.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/mail/order.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/mail/register.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/mail/transaction.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 382
+LINE: 460
+
+FILE: catalog/controller/product/compare.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 132
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 52
+LINE: 398
+LINE: 507
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 460
+LINE: 562
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 457
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+LINE: 270
+
+FILE: catalog/controller/startup/error.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/event.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/maintenance.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/router.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/sass.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/session.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/startup.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/tool/upload.php
+CODE: $data['content_top'] = $this->load->controller('common/content_top');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 26
+CODE: return $this->load->view('common/footer', $data);
+LINE: 80
+
+FILE: catalog/view/theme/default/template/account/account.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/address_form.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/address_list.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/affiliate.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/download.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/edit.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/forgotten.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/login.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/newsletter.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/order_info.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/order_list.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/password.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/recurring_info.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/recurring_list.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/register.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/reset.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/return_form.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/return_info.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/return_list.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/reward.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/tracking.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/transaction.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/voucher.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/account/wishlist.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/affiliate/login.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/affiliate/register.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/blog/article.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/blog/category.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/blog/latest.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/blog/menu.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/blog/review.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/cart.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/checkout/checkout.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/checkout/confirm.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/guest.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/guest_shipping.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/login.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/payment_address.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/payment_method.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/register.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/shipping_address.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/checkout/shipping_method.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/buyoneclick.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/cart.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/column_left.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/column_right.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/content_bottom.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/content_top.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/currency.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/home.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/common/language.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/maintenance.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/common/menu.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/search.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/common/success.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/error/not_found.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/information/contact.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/information/information.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/information/sitemap.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/information/tracking.twig
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/mail/affiliate.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/affiliate_alert.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/forgotten.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/order_add.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/order_alert.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/order_edit.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/register.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/register_alert.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/transaction.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/default/template/mail/voucher.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/product/compare.twig
+CODE: {{ header }}
+LINE: 1
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/product/manufacturer_list.twig
+CODE: {{ header }}
+LINE: 1
+CODE: {{ header }}
+LINE: 1
+
+FILE: catalog/view/theme/default/template/product/review.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+LINE: 1
+CODE: {{ header }}
+LINE: 1
+CODE: <footer>
+LINE: 1
 ----------------------------------------------------------------
 MOD: Localcopy OCMOD Install Fix
 
@@ -84,14 +905,20 @@ CODE: <ul class="nav navbar-nav navbar-right">
 LINE: 134
 ----------------------------------------------------------------
 MOD: Перетаскивание модулей в макетах
-
-FILE: admin/controller/design/layout.php
 CODE: protected function getForm() {
-LINE: 251
+LINE: 264
 
 FILE: admin/view/template/design/layout_form.twig
 CODE: {{ footer }}
 LINE: 445
 ----------------------------------------------------------------
 MOD: Українська мова / Украинский язык
+----------------------------------------------------------------
+MOD: Упрощенный заказ [Custom Quick Checkout]
+CODE: public function index() {
+LINE: 10
+
+FILE: catalog/model/setting/extension.php
+CODE: SELECT * FROM " . DB_PREFIX . "extension WHERE `type` =
+LINE: 30
 ----------------------------------------------------------------

@@ -22,8 +22,12 @@ class ControllerDesignLayout extends Controller {
 
 		$this->load->model('design/layout');
 
+$this->load->model('extension/module/designs/hyper_positions');
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_design_layout->addLayout($this->request->post);
+			
+            $layout_id = $this->model_design_layout->addLayout($this->request->post);
+            $layout_settings = isset($this->request->post['hyper_positions_width']) ? $this->request->post['hyper_positions_width'] : null;
+            $this->model_extension_module_designs_hyper_positions->editPositions($layout_id, $layout_settings);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -54,7 +58,11 @@ class ControllerDesignLayout extends Controller {
 
 		$this->load->model('design/layout');
 
+$this->load->model('extension/module/designs/hyper_positions');
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			
+            $layout_settings = isset($this->request->post['hyper_positions_width']) ? $this->request->post['hyper_positions_width'] : null;
+            $this->model_extension_module_designs_hyper_positions->editPositions($this->request->get['layout_id'], $layout_settings);
 			$this->model_design_layout->editLayout($this->request->get['layout_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -86,6 +94,8 @@ class ControllerDesignLayout extends Controller {
 
 		$this->load->model('design/layout');
 
+
+			$this->load->model('extension/module/designs/hyper_positions');
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $layout_id) {
 				$this->model_design_layout->deleteLayout($layout_id);
@@ -239,6 +249,9 @@ class ControllerDesignLayout extends Controller {
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 
+
+			$tmp_data = $this->load->controller('extension/module/designs/hyper_positions');
+			$data = array_merge($data, $tmp_data);
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -366,6 +379,8 @@ class ControllerDesignLayout extends Controller {
 			$layout_modules = array();
 		}
 
+
+			$data['hyper_positions_width'] = $this->model_extension_module_designs_hyper_positions->getPositions($this->request->get['layout_id']);
 		$data['layout_modules'] = array();
 		
 		// Add all the modules which have multiple settings for each module
@@ -397,11 +412,15 @@ class ControllerDesignLayout extends Controller {
 			}
 		}		
 		
+
+			$tmp_data = $this->load->controller('extension/module/designs/hyper_positions');
+			$data = array_merge($data, $tmp_data);
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('design/layout_form', $data));
+		
+			$this->response->setOutput($this->load->view('extension/module/designs/layout_hp_form', $data));
 	}
 
 	protected function validateForm() {
