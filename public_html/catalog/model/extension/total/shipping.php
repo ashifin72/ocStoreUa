@@ -20,8 +20,8 @@ class ModelExtensionTotalShipping extends Model {
 					}
 				}
 			}
-
-			$total['total'] += $this->session->data['shipping_method']['cost'];
+            $total['total'] += (float)$this->session->data['shipping_method']['cost'];
+//			$total['total'] += $this->session->data['shipping_method']['cost'];
 		}
 	}
 }
