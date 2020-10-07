@@ -16,7 +16,7 @@
 <p>Прибрана помилка "catalog/model/extension/total/shipping.php on line 24", котора виникала на PHP 7.1+</p>
 <h3>Установка</h3>
 <p>
-1. Качаем дістрибутив, або клонуємо  git clone https://github.com/ashifin72/ocStoreUa.git
-2. Створюємо базу даних і імпортуємо в неї ocstarter.sol підключаємо її в config.php та admin/config.php
-3. для входу використовуємо site.com/admin  admin   123456
+1. Качаем дістрибутив, або клонуємо  git clone https://github.com/ashifin72/ocStoreUa.git <br>
+2. Створюємо базу даних і імпортуємо в неї ocstarter.sol підключаємо її в config.php та admin/config.php <br>
+3. для входу використовуємо site.com/admin  admin   123456 <br>
 </p>

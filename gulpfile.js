@@ -1,8 +1,8 @@
 var syntax = 'sass', // Syntax: sass or scss;
-    temspl  = 'euwood',
+    temspl  = 'ashshop',
     path = 'public_html/catalog/view/theme/'+ temspl,
     pathcss = 'public_html/catalog/view/theme/'+ temspl +'/stylesheet',
-    site = 'acstarter.loc',
+    site = 'ocstarter.loc',
     type = '.twig',
     gulpVersion = 4; // Gulp version: 3 or 4
 gmWatch = false; // ON/OFF GraphicsMagick watching "image/_src" folder (true/false). Linux install gm: sudo apt update; sudo apt install graphicsmagick
