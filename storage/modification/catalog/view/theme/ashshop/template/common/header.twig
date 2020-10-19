@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]>
+<html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ title }}</title>
+  {% if robots %}
+    <meta name="robots" content="{{ robots }}"/>
+  {% endif %}
+  <base href="{{ base }}"/>
+  {% if description %}
+    <meta name="description" content="{{ description }}"/>
+  {% endif %}
+  {% if keywords %}
+    <meta name="keywords" content="{{ keywords }}"/>
+  {% endif %}
+  <meta property="og:title" content="{{ title }}"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="{{ og_url }}"/>
+  {% if og_image %}
+    <meta property="og:image" content="{{ og_image }}"/>
+  {% else %}
+    <meta property="og:image" content="{{ logo }}"/>
+  {% endif %}
+  <meta property="og:site_name" content="{{ name }}"/>
+  <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+  <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+  <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css"/>
+  <link href="catalog/view/theme/ashshop/stylesheet/stylesheet.css" rel="stylesheet">
+  {% for style in styles %}
+    <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}"/>
+  {% endfor %}
+  {% for script in scripts %}
+    <script src="{{ script }}" type="text/javascript"></script>
+  {% endfor %}
+  <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+  {% for link in links %}
+    <link href="{{ link.href }}" rel="{{ link.rel }}"/>
+  {% endfor %}
+  {% for analytic in analytics %}
+    {{ analytic }}
+  {% endfor %}
+
+				{% if buyoneclick_status_product or buyoneclick_status_category or buyoneclick_status_module %}
+					<script src="catalog/view/javascript/buyoneclick.js" type="text/javascript"></script>
+					<script>
+						function clickAnalytics(){
+							console.log('clickAnalytics');
+							{% if buyoneclick_ya_status and buyoneclick_ya_counter is defined and buyoneclick_ya_counter != '' and buyoneclick_ya_identificator is defined and buyoneclick_ya_identificator != '' %}
+								yaCounter{{ buyoneclick_ya_counter }}.reachGoal('{{ buyoneclick_ya_identificator }}');
+							{% endif %}
+							{% if buyoneclick_google_status and buyoneclick_google_category_btn is defined and buyoneclick_google_category_btn != '' and buyoneclick_google_action_btn is defined and buyoneclick_google_action_btn != '' %}
+								ga('send', 'event', '{{ buyoneclick_google_category_btn }}', '{{ buyoneclick_google_action_btn }}');
+								gtag('event', '{{ buyoneclick_google_action_btn }}', {'event_category': '{{ buyoneclick_google_category_btn }}'});
+							{% endif %}
+							return true;
+						}
+						function clickAnalyticsSend(){
+							console.log('clickAnalyticsSend');
+							{% if buyoneclick_ya_status and buyoneclick_ya_counter is defined and buyoneclick_ya_counter != '' and buyoneclick_ya_identificator_send is defined and buyoneclick_ya_identificator_send != '' %}
+								yaCounter{{ buyoneclick_ya_counter }}.reachGoal('{{ buyoneclick_ya_identificator_send }}');
+							{% endif %}
+							{% if buyoneclick_google_status and buyoneclick_google_category_send is defined and buyoneclick_google_category_send != '' and buyoneclick_google_action_send is defined and buyoneclick_google_action_send != '' %}
+								ga('send', 'event', '{{ buyoneclick_google_category_send }}', '{{ buyoneclick_google_action_send }}');
+								gtag('event', '{{ buyoneclick_google_action_send }}', {'event_category': '{{ buyoneclick_google_category_send }}'});
+							{% endif %}
+							return true;
+						}
+						function clickAnalyticsSuccess(){
+							console.log('clickAnalyticsSuccess');
+							{% if buyoneclick_ya_status and buyoneclick_ya_counter is defined and buyoneclick_ya_counter != '' and buyoneclick_ya_identificator_success is defined and buyoneclick_ya_identificator_success != '' %}
+								yaCounter{{ buyoneclick_ya_counter }}.reachGoal('{{ buyoneclick_ya_identificator_success }}');
+							{% endif %}
+							{% if buyoneclick_google_status and buyoneclick_google_category_success is defined and buyoneclick_google_category_success != '' and buyoneclick_google_action_success is defined and buyoneclick_google_action_success != '' %}
+								ga('send', 'event', '{{ buyoneclick_google_category_success }}', '{{ buyoneclick_google_action_success }}');
+								gtag('event', '{{ buyoneclick_google_action_success }}', {'event_category': '{{ buyoneclick_google_category_success }}'});
+							{% endif %}
+							return true;
+						}
+					</script>
+						{% if buyoneclick_validation_type %}
+							<script src="catalog/view/javascript/jquery.mask.min.js" type="text/javascript"></script>
+							<script>
+								$(document).ready(function(){
+									$('#boc_phone').mask('{{ buyoneclick_validation_type }}');
+								});
+							</script>
+						{% endif %}
+						{% if buyoneclick_exan_status %}
+							<script src="catalog/view/javascript/sourcebuster.min.js" type="text/javascript"></script>
+							<script>
+								sbjs.init({
+									callback: placeData
+								});
+
+								function placeData(sb) {
+									$sb_first_typ		= sb.first.typ;
+									$sb_first_src		= sb.first.src;
+									$sb_first_mdm		= sb.first.mdm;
+									$sb_first_cmp		= sb.first.cmp;
+									$sb_first_cnt		= sb.first.cnt;
+									$sb_first_trm		= sb.first.trm;
+
+									$sb_curr_typ		= sb.current.typ;
+									$sb_curr_src		= sb.current.src;
+									$sb_curr_mdm		= sb.current.mdm;
+									$sb_curr_cmp		= sb.current.cmp;
+									$sb_curr_cnt		= sb.current.cnt;
+									$sb_curr_trm		= sb.current.trm;
+
+									$sb_first_add_fd	= sb.first_add.fd;
+									$sb_first_add_ep	= sb.first_add.ep;
+									$sb_first_add_rf	= sb.first_add.rf;
+
+									$sb_curr_add_fd		= sb.current_add.fd;
+									$sb_curr_add_ep		= sb.current_add.ep;
+									$sb_curr_add_rf		= sb.current_add.rf;
+
+									$sb_session_pgs		= sb.session.pgs;
+									$sb_session_cpg		= sb.session.cpg;
+
+									$sb_udata_vst		= sb.udata.vst;
+									$sb_udata_uip		= sb.udata.uip;
+									$sb_udata_uag		= sb.udata.uag;
+
+									$sb_promo_code		= sb.promo.code;
+								};
+
+								function valueData() {
+									document.getElementById('sb_first_typ').value	= $sb_first_typ;
+									document.getElementById('sb_first_src').value	= $sb_first_src;
+									document.getElementById('sb_first_mdm').value	= $sb_first_mdm;
+									document.getElementById('sb_first_cmp').value	= $sb_first_cmp;
+									document.getElementById('sb_first_cnt').value	= $sb_first_cnt;
+									document.getElementById('sb_first_trm').value	= $sb_first_trm;
+
+									document.getElementById('sb_current_typ').value	 = $sb_curr_typ;
+									document.getElementById('sb_current_src').value	 = $sb_curr_src;
+									document.getElementById('sb_current_mdm').value	 = $sb_curr_mdm;
+									document.getElementById('sb_current_cmp').value	 = $sb_curr_cmp;
+									document.getElementById('sb_current_cnt').value	 = $sb_curr_cnt;
+									document.getElementById('sb_current_trm').value	 = $sb_curr_trm;
+
+									document.getElementById('sb_first_add_fd').value	= $sb_first_add_fd;
+									document.getElementById('sb_first_add_ep').value	= $sb_first_add_ep;
+									document.getElementById('sb_first_add_rf').value	= $sb_first_add_rf;
+
+									document.getElementById('sb_current_add_fd').value = $sb_curr_add_fd;
+									document.getElementById('sb_current_add_ep').value = $sb_curr_add_ep;
+									document.getElementById('sb_current_add_rf').value = $sb_curr_add_rf;
+
+									document.getElementById('sb_session_pgs').value	 = $sb_session_pgs;
+									document.getElementById('sb_session_cpg').value	 = $sb_session_cpg;
+
+									document.getElementById('sb_udata_vst').value	= $sb_udata_vst;
+									document.getElementById('sb_udata_uip').value	= $sb_udata_uip;
+									document.getElementById('sb_udata_uag').value	= $sb_udata_uag;
+
+									document.getElementById('sb_promo_code').value	 = $sb_promo_code;
+								};
+							</script>
+						{% endif %}
+						{% if buyoneclick_style_status %}
+							<link href="catalog/view/theme/default/stylesheet/buyoneclick.css" rel="stylesheet">
+						{% endif %}
+						<style type="text/css">
+							@keyframes lds-rolling {
+								0% {
+									-webkit-transform: translate(-50%, -50%) rotate(0deg);
+									transform: translate(-50%, -50%) rotate(0deg);
+								}
+								100% {
+									-webkit-transform: translate(-50%, -50%) rotate(360deg);
+									transform: translate(-50%, -50%) rotate(360deg);
+								}
+							}
+							@-webkit-keyframes lds-rolling {
+								0% {
+									-webkit-transform: translate(-50%, -50%) rotate(0deg);
+									transform: translate(-50%, -50%) rotate(0deg);
+								}
+								100% {
+									-webkit-transform: translate(-50%, -50%) rotate(360deg);
+									transform: translate(-50%, -50%) rotate(360deg);
+								}
+							}
+							.lds-rolling {
+								position: relative;
+								text-align: center;
+							}
+							.lds-rolling div, .lds-rolling div:after {
+								position: absolute;
+								width: 160px;
+								height: 160px;
+								border: 20px solid #bbcedd;
+								border-top-color: transparent;
+								border-radius: 50%;
+							}
+							.lds-rolling div {
+								-webkit-animation: lds-rolling 1s linear infinite;
+								animation: lds-rolling 1s linear infinite;
+								top: 100px;
+								left: 100px;
+							}
+							.lds-rolling div:after {
+								-webkit-transform: rotate(90deg);
+								transform: rotate(90deg);
+							}
+							.lds-rolling {
+								width: 200px !important;
+								height: 200px !important;
+								-webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+								transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+								margin: 0 auto;
+							}
+							.col-pd-15 {
+								padding-left:15px;
+								padding-right:15px;
+							}
+							.col-mb-10 {
+								margin-bottom:10px;
+							}
+							#boc_order hr {
+								margin-top:0px;
+								margin-bottom:15px;
+							}
+							.boc_product_info > div {
+								line-height: 120px;
+							}
+							.boc_product_info > div > img {
+								max-height: 120px;
+								margin: 0 auto;
+							}
+							.boc_product_info > div > img, .boc_product_info > div > div, .boc_product_info > div > p {
+								display: inline-block;
+								line-height: normal;
+								vertical-align: middle;
+							}
+							#boc_order .checkbox {
+								margin-top: 0;
+								padding: 0 10px;
+								border: 1px solid transparent;
+								border-radius: 6px;
+							}
+							#boc_order .checkbox.has-error {
+								border-color: #a94442;
+							}
+							@media (max-width: 767px) {
+								.boc_product_info > div {
+									line-height:normal;
+									text-align:center;
+								}
+							}
+						</style>
+				{% endif %}
+			
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2 col-sm-2 col-xs-6">
+        <div id="logo" class="logo-header">
+          {% if logo %}
+            {% if home == og_url %}
+              <img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive"/>
+            {% else %}
+              <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}"
+                                        class="img-responsive"/></a>
+            {% endif %}
+          {% else %}
+            <h1><a href="{{ home }}">{{ name }}</a></h1>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="col-md-3 col-sm-3  col-xs-6 currency-block">
+        {{ language }}
+        {{ currency }}
+      </div>
+      <div class="col-md-4 col-sm-4">
+        {{ search }}
+      </div>
+      <ul class="col-md-3 col-sm-3">
+        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle"
+                                data-toggle="dropdown"><i class="fa fa-user"></i> <span
+                    class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            {% if logged %}
+              <li><a href="{{ account }}">{{ text_account }}</a></li>
+              <li><a href="{{ order }}">{{ text_order }}</a></li>
+              <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
+              <li><a href="{{ download }}">{{ text_download }}</a></li>
+              <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+            {% else %}
+              <li><a href="{{ register }}">{{ text_register }}</a></li>
+              <li><a href="{{ login }}">{{ text_login }}</a></li>
+            {% endif %}
+          </ul>
+        </li>
+        <li class="header-phone"> {{ telephone }}</li>
+      </ul>
+    </div>
+  </div>
+</header>
+<nav id="top" class="top-menu">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 cart-wrapper">
+
+        <nav id="menu" class="navbar">
+          <div class="navbar-header"><span class="toggle-top-text hidden-lg hidden-md hidden-sm"><?php echo $text_information; ?>:</span>
+            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+          </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+              <ul class="nav navbar-nav">
+                {% for information in informations %}
+                <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+                {% endfor %}
+
+              </ul>
+
+
+
+
+          </div>
+        </nav>
+
+      </div>
+      <div class="col-sm-3 cart-wrapper">
+        {{ cart }}
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+{{ menu }}

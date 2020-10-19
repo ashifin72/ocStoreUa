@@ -23,7 +23,7 @@ final class Twig {
 		$config = array('autoescape' => false);
 
 		if ($cache) {
-			$config['cache'] = DIR_CACHE;
+//			$config['cache'] = DIR_CACHE;
 		}
 
 		$this->twig = new \Twig_Environment($loader, $config);

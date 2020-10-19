@@ -1,4 +1,4 @@
-2020-10-07 15:42:41 - MOD: Modification Default
+2020-10-10 14:13:04 - MOD: Modification Default
 
 FILE: system/engine/action.php
 REGEX: ~(require|include)(_once)?\(([^)]+)~
@@ -53,7 +53,11 @@ MOD: Buy One Click for OpenCart 3.x
 
 FILE: catalog/controller/common/header.php
 CODE: $data['telephone'] = $this->config->get('config_telephone');
-LINE: 112
+LINE: 113
+
+FILE: catalog/view/theme/ashshop/template/common/header.twig
+CODE: </head>
+LINE: 266
 
 FILE: catalog/view/theme/default/template/common/header.twig
 CODE: </head>
@@ -62,6 +66,10 @@ LINE: 264
 FILE: catalog/controller/common/footer.php
 CODE: $this->load->language('common/footer');
 LINE: 21
+
+FILE: catalog/view/theme/ashshop/template/common/footer.twig
+CODE: </body>
+LINE: 147
 
 FILE: catalog/view/theme/default/template/common/footer.twig
 CODE: </body>
@@ -576,6 +584,18 @@ LINE: 26
 CODE: return $this->load->view('common/footer', $data);
 LINE: 80
 
+FILE: catalog/view/theme/ashshop/template/common/currency.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/ashshop/template/common/menu.twig
+CODE: {{ header }}
+NOT FOUND - OPERATION SKIPPED!
+
 FILE: catalog/view/theme/default/template/account/account.twig
 CODE: {{ header }}
 LINE: 1
@@ -880,6 +900,8 @@ NOT FOUND - OPERATION SKIPPED!
 CODE: {{ header }}
 LINE: 1
 CODE: {{ header }}
+LINE: 1
+CODE: <footer>
 LINE: 1
 CODE: <footer>
 LINE: 1

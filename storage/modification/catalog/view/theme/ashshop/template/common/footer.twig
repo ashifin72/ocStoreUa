@@ -1,0 +1,149 @@
+{{ hyper_positions_footer_top }}
+<footer>
+  <div class="container">
+    <div class="row">
+      {% if informations %}
+      <div class="col-sm-3">
+        <h5>{{ text_information }}</h5>
+        <ul class="list-unstyled">
+         {% for information in informations %}
+          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="col-sm-3">
+        <h5>{{ text_service }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>{{ text_extra }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          <li><a href="{{ special }}">{{ text_special }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>{{ text_account }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ account }}">{{ text_account }}</a></li>
+          <li><a href="{{ order }}">{{ text_order }}</a></li>
+          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>{{ powered }}</p>
+  </div>
+</footer>
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+
+				{% if buyoneclick_status_product or buyoneclick_status_category or buyoneclick_status_module %}
+					<div id="boc_order" class="modal fade">
+					</div>
+					<div id="boc_success" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div class="text-center">{{ buyoneclick_success_field }}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						$('body').on('click', '.boc_order_btn', function(event) {
+							$.ajax({
+								url: 'index.php?route=extension/module/buyoneclick/common/buyoneclick/info',
+								type: 'post',
+								data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+								dataType: 'json',
+								beforeSend: function() {
+									$(event.target).button('loading');
+									$('#boc_order').empty();
+									$('#boc_order').append('<div class="lds-rolling"><div></div></div>');
+								},
+								complete: function() {
+									$(event.target).button('reset');
+								},
+								success: function(json) {
+									$('.alert, .text-danger').remove();
+									$('.form-group').removeClass('has-error');
+									if (json['error']) {
+										if (json['error']['option']) {
+											for (i in json['error']['option']) {
+												var element = $('#input-option' + i.replace('_', '-'));
+												if (element.parent().hasClass('input-group')) {
+													element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+												} else {
+													element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+												}
+											}
+										}
+
+										if (json['error']['recurring']) {
+											$('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+										}
+
+										// Highlight any found errors
+										$('.text-danger').parent().addClass('has-error');
+									} else {
+										$("#boc_order").modal('show');
+										$('#boc_order').empty();
+										$('#boc_order').html(json['success']);
+										{% if buyoneclick_exan_status %} valueData(); {% endif %}
+									}
+								},
+								error: function(xhr, ajaxOptions, thrownError) {
+									console.log(thrownError + " | " + xhr.statusText + " | " + xhr.responseText);
+								}
+							});
+						});
+						$('body').on('click', '.boc_order_category_btn', function(event) {
+							var for_post = {};
+							for_post.product_id = $(this).attr('data-product_id');
+							$.ajax({
+								url: 'index.php?route=extension/module/buyoneclick/common/buyoneclick/info',
+								type: 'post',
+								data: for_post,
+								dataType: 'json',
+								beforeSend: function() {
+									$(event.target).button('loading');
+								},
+								complete: function() {
+									$(event.target).button('reset');
+								},
+								success: function(json) {
+									$('.alert, .text-danger').remove();
+									$('.form-group').removeClass('has-error');
+									if (json['redirect']) {
+										location = json['redirect'];
+									} else {
+										// console.log(json);
+										$("#boc_order").modal('show');
+										$('#boc_order').empty();
+										$('#boc_order').html(json['success']);
+										{% if buyoneclick_exan_status %} valueData(); {% endif %}
+									}
+								},
+								error: function(xhr, ajaxOptions, thrownError) {
+									console.log(thrownError + " | " + xhr.statusText + " | " + xhr.responseText);
+								}
+							});
+						});
+					</script>
+				{% endif %}
+			
+</body></html>

@@ -22,5 +22,8 @@
 		"gulp-rsync": "0.0.9",
 		"gulp-sass": "^4.1.0",
 		"gulp-uglify": "^3.0.2"
+	},
+	"dependencies": {
+		"bourbon": "^7.0.0"
 	}
 }

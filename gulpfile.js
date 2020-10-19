@@ -19,6 +19,7 @@ sass = require('gulp-sass'),
     rsync = require('gulp-rsync'),
     imageResize = require('gulp-image-resize'),
     imagemin = require('gulp-imagemin'),
+    bourbon        = require('bourbon'),
     del = require('del');
 
 // Local Server
